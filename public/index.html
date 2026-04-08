@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Cursive App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-theme="light">
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="app-title-block">
+        <div class="app-title">The Cursive App</div>
+        <div class="app-subtitle">
+          Trace letters and words with your finger or mouse. Learn to read and write cursive.
+        </div>
+      </div>
+      <button id="themeToggle" class="theme-toggle" type="button">
+        <div class="theme-toggle-knob" id="themeIcon">☀️</div>
+        <span id="themeLabel">Pencil (Light)</span>
+      </button>
+    </header>
+
+    <main class="app-main">
+      <!-- LEFT: CANVAS -->
+      <section class="canvas-panel">
+        <div class="panel-title-row">
+          <div class="panel-title">Tracing Pad</div>
+          <div class="mode-tabs">
+            <button class="mode-tab active" data-mode="letters" id="tabLetters">
+              Letters
+            </button>
+            <button class="mode-tab" data-mode="words" id="tabWords">
+              Words
+            </button>
+          </div>
+        </div>
+
+        <div class="canvas-wrapper">
+          <div class="canvas-header">
+            <span id="currentTargetLabel">Letter: A</span>
+            <span class="status-pill" id="strokeStatus">Ready to trace</span>
+          </div>
+          <div class="canvas-inner">
+            <div class="guideline-overlay"></div>
+            <div class="trace-target" id="traceTarget">A</div>
+            <canvas id="traceCanvas"></canvas>
+          </div>
+          <div class="canvas-footer">
+            <button class="btn-secondary" id="clearBtn" type="button">
+              ✨ Clear strokes
+            </button>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span id="strokeCountLabel">Strokes: 0</span>
+              <span id="sessionTimeLabel">Time: 0s</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: CONTROLS / WORDS / PROGRESS -->
+      <aside class="side-panel">
+        <div class="side-section">
+          <div class="side-section-title">Letter practice</div>
+          <div class="field-row">
+            <span class="field-label">Choose letter:</span>
+            <select id="letterSelect"></select>
+          </div>
+          <p class="tip-text">
+            Start each stroke gently, keep a steady slant, and let your hand move in one smooth motion.
+          </p>
+        </div>
+
+        <div class="side-section">
+          <div class="side-section-title">Word practice</div>
+          <div class="field-row">
+            <span class="field-label">Difficulty:</span>
+            <select id="difficultySelect">
+              <option value="all">All levels</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+          <div class="word-list" id="wordList"></div>
+          <div class="progress-row">
+            <span>Words practiced</span>
+            <div class="progress-bar">
+              <div class="progress-bar-inner" id="wordProgress"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="side-section">
+          <div class="side-section-title">Tips</div>
+          <p class="tip-text" id="dynamicTip">
+            Trace slowly at first. Focus on the shape and connections, not speed.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer-note">
+      <span>
+        Practice library: <strong id="wordCountLabel">0</strong> words • Switch between letters and words using the tabs.
+      </span>
+      <span>
+        Use your finger on touch screens or your mouse on desktop.
+      </span>
+    </footer>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
